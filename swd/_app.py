@@ -443,6 +443,7 @@ class Application:
             self.print_info(self._swd.get_version())
             self._swd.get_idcode()
             self._cortexm = swd.CortexM(self._swd)
+            self.print_info(self._cortexm.info_str())
             was_halted = self._cortexm.is_halted()
             if was_halted:
                 self.print_noquite("Core is halted.")
