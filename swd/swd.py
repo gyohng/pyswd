@@ -13,6 +13,15 @@ class Swd():
             # default SWD driver is Stlink
             driver = _Stlink(swd_frequency=swd_frequency, serial_no=serial_no)
         self._drv = driver
+        self._io = {}
+
+    def append_io(self, registers):
+        """Append bitfield registers"""
+        self._io.update(registers)
+
+    def reg(self, reg_name):
+        """Access bitfield register"""
+        return self._io[reg_name]
 
     def get_version(self):
         """Get SWD driver version
